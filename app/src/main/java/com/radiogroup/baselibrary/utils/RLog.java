@@ -25,10 +25,6 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
-import static com.gzkit.jijianbao.base.util.RLog.TYPE.E;
-import static com.gzkit.jijianbao.base.util.RLog.TYPE.FILE;
-import static com.gzkit.jijianbao.base.util.RLog.TYPE.JSON;
-import static com.gzkit.jijianbao.base.util.RLog.TYPE.XML;
 
 /**
  * @author Rayhahah
@@ -303,11 +299,11 @@ public class RLog {
      * @param tag
      * @param msg
      */
-    private static void logToFile(TYPE type, String fileName, String tag, String msg) {
+    private static void logToFile(final TYPE type, String fileName, final String tag, String msg) {
         synchronized (RLog.class) {
             try {
                 String fullPath = dir + fileName + ".txt";
-                File file = new File(fullPath);
+                final File file = new File(fullPath);
                 if (!file.exists()) {
                     boolean newFile = file.createNewFile();
                     if (!newFile) {
@@ -326,7 +322,7 @@ public class RLog {
                         .append(LINE_SEPARATOR);
                 if (mLogBorder) sb.append(BOTTOM_BORDER).append(LINE_SEPARATOR);
 
-                String writeMsg = sb.toString();
+                final String writeMsg = sb.toString();
 
                 new Thread(new Runnable() {
                     @Override
