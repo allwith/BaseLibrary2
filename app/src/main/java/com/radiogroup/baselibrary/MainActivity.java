@@ -1,18 +1,14 @@
 package com.radiogroup.baselibrary;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.radiogroup.baselibrary.mainfragment.FindFragment;
+import com.radiogroup.baselibrary.mainfragment.FragmentManagerHelper;
 import com.radiogroup.baselibrary.mainfragment.HomeFragment;
 import com.radiogroup.baselibrary.mainfragment.MessageFragment;
 import com.radiogroup.baselibrary.mainfragment.NewFragment;
-
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -21,24 +17,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private NewFragment mNewFragment;
     private MessageFragment mMessageFragment;
 
+    private FragmentManagerHelper mFragmentHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        initData();
 
+    }
+
+
+    private void initData(){
         findViewById(R.id.home_rb).setOnClickListener(this);
         findViewById(R.id.find_rb).setOnClickListener(this);
         findViewById(R.id.new_rb).setOnClickListener(this);
         findViewById(R.id.message_rb).setOnClickListener(this);
 
-        // 默认一进入页面就添加主Fragment
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        mFragmentHelper = new FragmentManagerHelper(getSupportFragmentManager(), R.id.main_tab_fl);
         mHomeFragment = new HomeFragment();
-        fragmentTransaction.add(R.id.main_tab_fl, mHomeFragment);
-        // 最后记得提交
-        fragmentTransaction.commit();
+        mFragmentHelper.add(mHomeFragment);
+
+//         默认一进入页面就添加主Fragment
+//        FragmentManager fragmentManager = getSupportFragmentManager();
+//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//        mHomeFragment = new HomeFragment();
+//        fragmentTransaction.add(R.id.main_tab_fl, mHomeFragment);
+//        // 最后记得提交
+//        fragmentTransaction.commit();
     }
+
 
     @Override
     public void onClick(View v) {
@@ -60,71 +68,112 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     private void homeRbClick() {
-        FragmentManager fragmentManager = getSupportFragmentManager();
+        /*FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        if (mHomeFragment == null){
+            mHomeFragment = new HomeFragment();
+        }
+
         List<Fragment> fragments = fragmentManager.getFragments();
         for (Fragment fragment : fragments) {
             fragmentTransaction.hide(fragment);
         }
 
-        fragmentTransaction.show(mHomeFragment);
-        fragmentTransaction.commit();
+        if (!fragments.contains(mHomeFragment)){
+            fragmentTransaction.add(R.id.main_tab_fl, mHomeFragment);
+        }else {
+            fragmentTransaction.show(mHomeFragment);
+        }
+
+        fragmentTransaction.commit();*/
+
+        if (mHomeFragment == null){
+            mHomeFragment = new HomeFragment();
+        }
+        mFragmentHelper.switchFragment(mHomeFragment);
     }
 
 
     private void findRbClick() {
-        FragmentManager fragmentManager = getSupportFragmentManager();
+        /*FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        if(mFindFragment == null){
+            mFindFragment = new FindFragment();
+        }
+
         List<Fragment> fragments = fragmentManager.getFragments();
         for (Fragment fragment : fragments) {
             fragmentTransaction.hide(fragment);
         }
 
-        if(mFindFragment == null){
-            mFindFragment = new FindFragment();
-            fragmentTransaction.add(R.id.main_tab_fl,mFindFragment);
+        if(!fragments.contains(mFindFragment)){
+            fragmentTransaction.add(R.id.main_tab_fl, mFindFragment);
         }else {
             fragmentTransaction.show(mFindFragment);
         }
 
-        fragmentTransaction.commit();
+        fragmentTransaction.commit();*/
+        if(mFindFragment == null){
+            mFindFragment = new FindFragment();
+        }
+        mFragmentHelper.switchFragment(mHomeFragment);
     }
 
 
     private void newRbClick() {
-        FragmentManager fragmentManager = getSupportFragmentManager();
+        /*FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        if(mNewFragment == null){
+            mNewFragment = new NewFragment();
+        }
+
         List<Fragment> fragments = fragmentManager.getFragments();
         for (Fragment fragment : fragments) {
             fragmentTransaction.hide(fragment);
         }
 
-        if(mNewFragment == null){
-            mNewFragment = new NewFragment();
-            fragmentTransaction.add(R.id.main_tab_fl,mNewFragment);
+        if(!fragments.contains(mNewFragment)){
+            fragmentTransaction.add(R.id.main_tab_fl, mNewFragment);
         }else {
             fragmentTransaction.show(mNewFragment);
         }
 
-        fragmentTransaction.commit();
+        fragmentTransaction.commit();*/
+
+        if(mNewFragment == null){
+            mNewFragment = new NewFragment();
+        }
+        mFragmentHelper.switchFragment(mNewFragment);
     }
 
     private void messageRbClick() {
-        FragmentManager fragmentManager = getSupportFragmentManager();
+        /*FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        List<Fragment> fragments = fragmentManager.getFragments();
+
+        if(mMessageFragment == null) {
+            mMessageFragment = new MessageFragment();
+        }
+
+            List<Fragment> fragments = fragmentManager.getFragments();
         for (Fragment fragment : fragments) {
             fragmentTransaction.hide(fragment);
         }
 
-        if(mMessageFragment == null){
-            mMessageFragment = new MessageFragment();
-            fragmentTransaction.add(R.id.main_tab_fl,mMessageFragment);
+        if(!fragments.contains(mMessageFragment)  ){
+            fragmentTransaction.add(R.id.main_tab_fl, mMessageFragment);
         }else {
             fragmentTransaction.show(mMessageFragment);
         }
 
-        fragmentTransaction.commit();
+        fragmentTransaction.commit();*/
+
+        if(mMessageFragment == null) {
+            mMessageFragment = new MessageFragment();
+        }
+        mFragmentHelper.switchFragment(mMessageFragment);
     }
 
 
