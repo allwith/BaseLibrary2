@@ -3,6 +3,7 @@
           package="com.radiogroup.baselibrary">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    uses-permission android:name="android.permission.CHANGE_WIFI_STATE"
 
     <application
         android:allowBackup="true"
