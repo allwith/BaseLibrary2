@@ -15,7 +15,9 @@
  *******************************************************************************/
 package com.radiogroup.baselibrary.photoview.lookover;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -28,6 +30,7 @@ import com.radiogroup.baselibrary.R;
 import com.radiogroup.baselibrary.photoview.PhotoView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * uk.co.senab.photoview,
@@ -46,6 +49,18 @@ public class ViewPagerActivity extends AppCompatActivity {
 	private ArrayList<String> sDrawables;
 	public static final String KEY_IMAGE_URLS = "imageUrls";
 	public static final String KEY_POSITION = "position";
+
+
+
+	public static void startImagePagerActivity(Activity activity, List<String> imgUrls, int position){
+		Intent intent = new Intent(activity, ViewPagerActivity.class);
+		intent.putStringArrayListExtra(ViewPagerActivity.KEY_IMAGE_URLS, new ArrayList<String>(imgUrls));
+		intent.putExtra(ViewPagerActivity.KEY_POSITION, position);
+		activity.startActivity(intent);
+		activity.overridePendingTransition(R.anim.fade_in_img, R.anim.fade_out_img);
+	}
+
+
     @Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

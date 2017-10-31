@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.radiogroup.baselibrary.R;
 import com.radiogroup.baselibrary.activity.ListViewActivity;
+import com.radiogroup.baselibrary.activity.TestImageChooseActivity;
 import com.radiogroup.baselibrary.activity.testninegridlayout.TestActivity;
 
 /**
@@ -39,6 +40,15 @@ public class HomeFragment extends Fragment {
                 startActivity(new Intent(getActivity(), TestActivity.class));
             }
         });
+
+        TextView contentTv3 = (TextView) rootView.findViewById(R.id.content_tv3);
+        contentTv3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), TestImageChooseActivity.class));
+            }
+        });
+
 
         return rootView;
     }
