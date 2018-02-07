@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mHomeFragment = new HomeFragment();
         mFragmentHelper.add(mHomeFragment);
 
+        ///dfdsf
 //         默认一进入页面就添加主Fragment
 //        FragmentManager fragmentManager = getSupportFragmentManager();
 //        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
