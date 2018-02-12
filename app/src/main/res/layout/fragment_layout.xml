@@ -23,9 +23,32 @@
     <TextView
         android:id="@+id/content_tv3"
         android:layout_marginTop="20dp"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="图片"
         />
+
+    <TextView
+        android:id="@+id/tv_test_title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@android:color/white"
+        android:gravity="center"
+        android:text="测试titlebar"
+        />
+
+    <TextView
+        android:id="@+id/tv_test_sliding_tab"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@android:color/white"
+        android:gravity="center"
+        android:text="测试sliding_tab"
+        />
+
 
 </LinearLayout>

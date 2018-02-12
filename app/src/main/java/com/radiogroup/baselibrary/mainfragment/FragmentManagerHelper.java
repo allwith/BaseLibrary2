@@ -9,8 +9,6 @@ import android.support.v4.app.FragmentTransaction;
 import java.util.List;
 
 /**
- * Email 240336124@qq.com
- * Created by Darren on 2016/12/4.
  * Version 1.0
  * Description:
  */

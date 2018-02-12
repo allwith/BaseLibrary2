@@ -9,6 +9,9 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.radiogroup.baselibrary.R;
+import com.radiogroup.baselibrary.titlebar.CommonTitleBar;
+
 /**
  * <pre>
  *     author: Blankj
@@ -39,6 +42,8 @@ public abstract class BaseActivity extends AppCompatActivity
 
     protected BaseActivity mActivity;
 
+    protected CommonTitleBar titleBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +65,10 @@ public abstract class BaseActivity extends AppCompatActivity
                 }
             }
             setContentView(contentView);
+
+            titleBar = (CommonTitleBar) findViewById(R.id.title_bar);
+            initTitle(titleBar);
+
             initView(savedInstanceState, contentView);
             doBusiness(this);
         } catch (Exception e) {
@@ -82,6 +91,7 @@ public abstract class BaseActivity extends AppCompatActivity
      */
     public abstract int bindLayout();
 
+    protected abstract void initTitle(CommonTitleBar titleBar);
     /**
      * 初始化view
      */

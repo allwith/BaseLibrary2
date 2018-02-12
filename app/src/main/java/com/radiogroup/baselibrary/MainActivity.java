@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(mFindFragment == null){
             mFindFragment = new FindFragment();
         }
-        mFragmentHelper.switchFragment(mHomeFragment);
+        mFragmentHelper.switchFragment(mFindFragment);
     }
 
 
